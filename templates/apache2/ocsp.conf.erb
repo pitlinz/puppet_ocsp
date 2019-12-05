@@ -1,0 +1,46 @@
+	SetEnv PHPINCPATH <%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/php/
+	SetEnv MODULEPATH <%= scope.lookupvar('::pitlinz_ocsp::modulepath') %>/
+
+    Alias /ocsp-admin "<%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/htsystem/admin"
+    <Directory "<%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/htsystem/admin">
+        Options +FollowSymLinks
+        AllowOverride All
+        <IfVersion >= 2.4>
+			Require all granted
+        </IfVersion>
+        <IfVersion < 2.4>
+             Order allow,deny
+             Allow from all
+        </IfVersion>
+    </Directory>
+
+	Alias /ocsp-system "<%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/htsystem/system"
+    <Directory "<%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/htsystem/system">
+        Options +FollowSymLinks
+        AllowOverride None
+        <IfVersion >= 2.4>
+			Require all granted
+        </IfVersion>
+        <IfVersion < 2.4>
+             Order allow,deny
+             Allow from all
+        </IfVersion>
+    </Directory>
+    
+    Alias /ocsp-admin2 "<%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/htsystem/admin2"
+    <Directory "<%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/htsystem/admin2">
+        Options +FollowSymLinks
+        AllowOverride All
+        <IfVersion >= 2.4>
+			Require all granted
+        </IfVersion>
+        <IfVersion < 2.4>
+             Order allow,deny
+             Allow from all
+        </IfVersion>
+    </Directory>
+    
+    include <%= scope.lookupvar('::pitlinz_ocsp::corepath') %>/config/system.include
+    include <%= scope.lookupvar('::pitlinz_ocsp::toolspath') %>/config/*.conf
+    
+    

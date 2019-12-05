@@ -1,0 +1,13 @@
+    
+    Alias /apcu-admin "<%= scope.lookupvar('::pitlinz_ocsp::toolspath') %>/apcadmin"
+    <Directory "<%= scope.lookupvar('::pitlinz_ocsp::toolspath') %>/apcadmin">
+        Options +FollowSymLinks
+        AllowOverride All
+        <IfVersion >= 2.4>
+			Require all granted
+        </IfVersion>
+        <IfVersion < 2.4>
+             Order allow,deny
+             Allow from all
+        </IfVersion>
+    </Directory>
