@@ -5,11 +5,11 @@
  */
 class pitlinz_ocsp::users::sftpuser(
     $login			= "${::pitlinz_ocsp::sftpuser}",
-    $password		= "",
-	$passwordhash	= "\$6\$0ledZ5o6\$.3tgFeg5cZbWlQOOAuaYZhyDTEyHWu2QVcRUdV.24UPpFkvKsTu6aRuBeT/CDL7vjBdV4lq.CuEpxgPkT70YF1",
+    $password		= '',
+	$passwordhash	= '',
 ) {
 
-	include ::pitlinz_ocsp
+    include ::pitlinz_ocsp
 
     if $password != '' {
         $pwd_hash = pw_hash($password, 'SHA-512', $::fqdn)
